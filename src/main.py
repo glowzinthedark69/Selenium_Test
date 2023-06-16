@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
 
 
 def test_login():
@@ -32,6 +33,14 @@ def test_login():
 
     # Assert that the logout button is displayed, meaning a successful login
     assert logout_link.is_displayed()
+
+    # Attempt to locate the text element
+    try:
+        element = WebDriverWait(driver, 10).until(EC.presence_of_element_located(
+            (By.XPATH, "//*[text()='Congratulations student. You successfully logged in!']")))
+    except TimeoutException:
+        driver.quit()
+        raise Exception("The expected text was not found on the page")
 
     # close the driver
     driver.quit()
