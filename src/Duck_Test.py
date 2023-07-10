@@ -6,7 +6,6 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class DuckDuckGoSearchTest(unittest.TestCase):
-
     def setUp(self):
         self.driver = webdriver.Chrome()
 
@@ -26,7 +25,10 @@ class DuckDuckGoSearchTest(unittest.TestCase):
         # Assert that the first result contains the word "Cypress"
         wait = WebDriverWait(self.driver, 10)
         results = wait.until(
-            EC.presence_of_all_elements_located((By.CSS_SELECTOR, '[data-testid="result-extras-url-link"]')))
+            EC.presence_of_all_elements_located(
+                (By.CSS_SELECTOR, '[data-testid="result-extras-url-link"]')
+            )
+        )
 
         # Check if any of the result links have the href attribute "https://www.cypress.io"
         hrefs = [result.get_attribute("href") for result in results]
