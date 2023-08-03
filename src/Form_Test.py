@@ -79,9 +79,6 @@ class TestFormSubmission(unittest.TestCase):
             # Get the CSS border property of the input field
             border_color = email_error.value_of_css_property("border-color")
 
-            # Print the border color to the console
-            print(f"Border color: {border_color}")
-
             # Assert that the color is what you expect
             assert "rgb(255, 0, 0)" in border_color
 
