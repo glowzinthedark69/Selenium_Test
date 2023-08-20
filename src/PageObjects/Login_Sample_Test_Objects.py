@@ -1,5 +1,3 @@
-import unittest
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -46,18 +44,7 @@ class LoginPage:
 
     def validate_successful_login(self):
         # Check if the login message is displayed
-        assert self.get_login_success_message().is_displayed(), "Login success message not displayed"
+        assert self.get_login_success_message().is_displayed(), "Login success message not displayed as expected"
 
         # Check if the logout button is displayed
-        assert self.get_logout_button().is_displayed(), "Logout button not displayed"
-
-    # def form_error_validation(self):
-    #     email_error = WebDriverWait(self.driver, 5).until(
-    #         EC.presence_of_element_located((By.CSS_SELECTOR, "#userEmail.field-error"))
-    #     )
-    #     border_color = email_error.value_of_css_property("border-color")
-    #     return {
-    #         "error_element": email_error,
-    #         "border_color": border_color
-    #     }
-    # In your test class:
+        assert self.get_logout_button().is_displayed(), "Logout button not displayed as expected"
