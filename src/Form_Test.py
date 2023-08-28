@@ -1,11 +1,8 @@
 import time
 import unittest
 from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
-from page_objects import TextBoxPage
+from src.PageObjects.page_objects import TextBoxPage
 
 
 class BaseTest(unittest.TestCase):
@@ -60,7 +57,6 @@ class TestFormSubmission(BaseTest):
             assert error_validation_data["error_element"] is not None
 
             # Assert that the color is what you expect
-            # print("Actual border color:", error_validation_data["border_color"])
             assert "rgb(255, 0, 0)" in error_validation_data["border_color"]
 
             # Add other assertions if needed...
